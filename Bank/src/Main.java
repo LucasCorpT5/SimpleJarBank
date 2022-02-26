@@ -34,7 +34,8 @@ public class Main {
                 System.out.println();
                 System.out.print("Enter a withdraw value: ");
                 bank.saque = sc.nextDouble();
-                bank.account -= bank.saque;
+                // Tax -5 ex
+                bank.account -= bank.saque - 5;
                 System.out.println();
                 System.out.println("Updated account data: ");
                 System.out.printf("Account " + bank.accountNumber + ", Holder: " + bank.accountHolder + ", Balance: $ %.2f", bank.account);
