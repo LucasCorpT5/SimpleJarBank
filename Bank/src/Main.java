@@ -1,47 +1,49 @@
-import entities.Bank;
+import entities.Account;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Bank bank = new Bank();
+        Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
+        Account account;
 
         System.out.print("Enter account number: ");
-        bank.accountNumber = sc.nextInt();
+        int number = sc.nextInt();
         System.out.print("Enter account holder: ");
-        bank.accountHolder = sc.next();
-        System.out.print("Is there an initial deposit (y/n)? ");
-        bank.yesorno = sc.next();
-
-        switch(bank.yesorno) {
-            case "y":
-                System.out.print("Enter initial deposit value: ");
-                bank.initialDeposit = sc.nextDouble();
-                bank.account += bank.initialDeposit;
-                System.out.println();
-                System.out.println("Account data: ");
-                System.out.printf("Account " + bank.accountNumber + ", Holder: " + bank.accountHolder + ", Balance: $ %.2f", bank.account);
-                System.out.println();
-                System.out.println();
-                System.out.print("Enter a deposit value: ");
-                bank.deposit = sc.nextDouble();
-                System.out.println();
-                bank.account += bank.deposit;
-                System.out.println("Updated account data: ");
-                System.out.printf("Account " + bank.accountNumber + ", Holder: " + bank.accountHolder + ", Balance: $ %.2f", bank.account);
-                System.out.println();
-                System.out.println();
-                System.out.print("Enter a withdraw value: ");
-                bank.saque = sc.nextDouble();
-                // Tax -5 ex
-                bank.account -= bank.saque - 5;
-                System.out.println();
-                System.out.println("Updated account data: ");
-                System.out.printf("Account " + bank.accountNumber + ", Holder: " + bank.accountHolder + ", Balance: $ %.2f", bank.account);
-                break;
-            case "n":
-                break;
+        sc.nextLine();
+        String holder = sc.nextLine();
+        System.out.print("Is there initial deposit (y/n)? ");
+        char response = sc.next().charAt(0);
+        if (response == 'y') {
+            System.out.print("Enter initial deposit value: ");
+            double initialDeposit = sc.nextDouble();
+            account = new Account(number, holder, initialDeposit);
+        } else {
+            account = new Account(number, holder);
         }
+
+        System.out.println();
+        System.out.println("Account data: ");
+        System.out.println(account);
+
+        System.out.println();
+        System.out.print("Enter deposit value: ");
+        double depositValue = sc.nextDouble();
+        account.deposit(depositValue);
+        System.out.println("Updated account data: ");
+        System.out.print(account);
+
+        System.out.println();
+        System.out.print("Enter withdraw value: ");
+        double withdrawValue = sc.nextDouble();
+        account.withdraw(withdrawValue);
+        System.out.println("Updated account data: ");
+        System.out.print(account);
+
+
+
+        sc.close();
     }
 }
