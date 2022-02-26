@@ -11,7 +11,7 @@ public class Main {
         bank.accountNumber = sc.nextInt();
         System.out.print("Enter account holder: ");
         bank.accountHolder = sc.next();
-        System.out.print("Is there an initial deposit (y/s)? ");
+        System.out.print("Is there an initial deposit (y/n)? ");
         bank.yesorno = sc.next();
 
         switch(bank.yesorno) {
