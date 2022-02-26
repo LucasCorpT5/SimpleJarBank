@@ -21,11 +21,16 @@ public class Main {
                 bank.account += bank.initialDeposit;
                 System.out.println("Account data: ");
                 System.out.printf("Account " + bank.accountNumber + ", Holder: " + bank.accountHolder + ", Balance: $ %.2f", bank.account);
+                System.out.println();
                 System.out.print("Enter a deposit value: ");
+                System.out.println();
                 bank.deposit = sc.nextDouble();
                 System.out.println("Updated account data: ");
                 System.out.printf("Account " + bank.accountNumber + ", Holder: " + bank.accountHolder + ", Balance: $ %.2f", bank.account);
-
+                System.out.print("Enter a withdraw value: ");
+                bank.saque = sc.nextDouble();
+                System.out.println("Updated account data: ");
+                System.out.printf("Account " + bank.accountNumber + ", Holder: " + bank.accountHolder + ", Balance: $ %.2f", bank.account);
                 break;
             case "n":
                 break;

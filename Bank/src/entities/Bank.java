@@ -7,6 +7,7 @@ public class Bank {
     public double initialDeposit;
     public double deposit;
     public String yesorno;
+    public double saque;
 
     public double enterInitialDeposit() {
         return initialDeposit + account;
